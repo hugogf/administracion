@@ -1,0 +1,160 @@
+@import "bootstrap.min.css";
+@import "iconos.css";
+.div-new{color:#f00;margin:0;padding:0;}
+.div-new form{border-left:1px solid #c0c0c0;padding:0 10px}
+.div-new input[type=submit],.div-new a{margin:5px}
+.div-new h4{color:#ffa500;margin:0;padding:20px 0}
+.div-new form{background:none;margin:10px 0}
+.div-new input,.div-new select{height:30px;width:160px;border:1px solid #eee}
+.div-new .input_new{float:left;background:#eee;height:30px;border-radius:5px 0 0 5px;width:110px;font-size:13px;padding:3px;text-align:right;color:#666}
+.div-new .campo-formulario{display:block;margin:5px 0}
+.div-new:focus{box-shadow:.3em .5em 1.2em #000 !important}
+.table{color:#aaa}
+.link-thumb{text-align:right}
+.thumbnail{height:300px;}
+.thumbnail .caption{height:250px;}
+.thumbnail .caption p{color:#000}
+.form-plan label{width:120px;margin:5px 0;float:left;font-size:12px;color:#fdbd4b}
+.form-plan input,.form-plan select{width:270px;border:1px solid #eee}
+.form-plan input[type=submit]{display:block;margin:10px auto;background:#fdbd4b;color:#fff}
+.form-edit-usr .campo-form{display:block;margin:5px 0;}
+.form-edit-usr .campo-form label{text-align:right;margin:0 10px}
+.form input[type=text],.form input[type=checkbox],.form input[type=number]{width:100%}
+.form input[type=radio]{float:left;margin-right:25px}
+.form select{width:100%;height:26px}
+.form .fecha{width:100%}
+.form .valor-plan{width:100%;height:26px;display:inline-block}
+.form #electivo{width:100%;padding:0;}
+.form #electivo li{list-style:none}
+.form #electivo p{float:left}
+.form a{width:100%;margin:20px auto}
+.form .col-xs-12,.form .col-md-3,.form .col-md-4,.form .col-md-6,.form .col-md-2{position:static !important}
+@media print{.listado{display:none}
+.btn{display:none}
+}#form-pago{border-left:1px solid #c0c0c0;padding:15px;display:inline-block;}
+#form-pago .pack-form{display:block}
+#form-pago label{background:#c0c0c0;width:20%;font-size:12px;color:#fff;padding:3px;text-align:right}
+#form-pago input,#form-pago select{width:30%}
+#form-pago input[type=submit]{margin:10px;width:20%}
+#form-pago a{width:20%}
+#form-pago select{padding:2px}
+.blocke-pago-1 label,.blocke-pago-2 label,.blocke-pago-3 label,.blocke-pago-4 label{margin-left:10px !important;padding:3px !important;width:auto;text-align:right}
+.blocke-pago-1 input,.blocke-pago-2 input,.blocke-pago-3 input,.blocke-pago-4 input{border:1px solid #c0c0c0;text-align:center;}
+.blocke-pago-1 input:focus,.blocke-pago-2 input:focus,.blocke-pago-3 input:focus,.blocke-pago-4 input:focus{outline:0;box-shadow:0 0 10px #ffa500}
+.blocke-pago-1 .fecha{width:30px !important}
+.blocke-pago-3 input,.blocke-pago-4 input{width:30%}
+.blocke-pago-3 label,.blocke-pago-4 label{width:130px !important}
+.cheque{display:none}
+#form-anular-pago{display:none;border-left:1px solid #c0c0c0;}
+#form-anular-pago label{background:#c0c0c0;margin:10px 0;padding:4px;color:#fff;width:30%;font-size:12px;text-align:right}
+#form-anular-pago select{margin:10px 0;width:60%}
+#form-anular-pago input{margin:10px 0;width:60%}
+#form-anular-pago input[type=submit],#form-anular-pago a{width:15%}
+#btn-pago,#btn-baja,#btn-anular-pago{margin:30px 10px}
+#cabeza{padding:0;color:#fff;height:115px;background-image:url("http://2.bp.blogspot.com/-HHnjlcwCRWo/Ty3W0ibJ6eI/AAAAAAAAxnc/CkoqhHDcmws/s1600/libros+%282%29.jpg");}
+#cabeza h2{background-color:rgba(0,0,0,0.6);margin:0 auto;float:left;font-weight:normal;padding:20px;border-radius:0 0 30px 0}
+#cuerpo{padding:0;margin:8px 0;}
+#cuerpo table{color:#000}
+#cuerpo h2{margin:0;display:block;padding:5px;background:#04b9d1;color:#fff;font-size:23px;font-weight:normal;font-family:'Raleway',sans-serif;}
+#cuerpo h2 small{color:#efefef}
+#cuerpo .seccion ul{margin:20px auto;display:block;}
+#cuerpo .seccion ul li{display:inline-block;}
+#cuerpo .seccion ul li a{color:#04b9d1;padding:15px;border-radius:5px;}
+#cuerpo .seccion ul li a:hover{transition:.5s;color:#fff;background:#04b9d1}
+#cabeza,#datos-alumno,#menu-lateral ul li a,#cabeza h2,#noticias,#noticias h4{font-family:'Raleway',sans-serif}
+#datos-alumno{background:rgba(255,255,255,0.6);margin:8px 0;padding:0 5px;font-size:10px;border-right:3px solid #04b9d1;color:#000;}
+#datos-alumno p{padding:0;margin:0;text-align:right}
+#cuerpo p{background:#fff;margin:10px;border-bottom:3px solid #04b9d1;border-bottom:0;padding:0 15px;font-size:11px}
+#menu-lateral{margin:0;padding:0;background:#04b9d1;}
+#menu-lateral ul{margin:0;padding:0;}
+#menu-lateral ul li{padding:10px;display:inline-block;}
+#menu-lateral ul li:hover{background:#fff;transition:1s;}
+#menu-lateral ul li:hover a{color:#04b9d1}
+#menu-lateral ul li a{color:#fff;whith:100%;display:block;font-size:17px}
+#noticias{background:#fff;font-size:12px;border-radius:15px;margin:8px;padding:0;}
+#noticias h4{color:#fff;background:#04b9d1;display:block;padding:8px;margin:0;font-weight:normal}
+#noticias a{color:#000;font-size:12px}
+#noticias p{color:#646566;border-bottom:1px solid #04b9d1}
+#noticias height 5px{padding:4px 0}
+.footer{margin:0;position:relative;bottom:0;background:#04b9d1;color:#fff;display:block}
+#menu-lateral-material{list-style:none;margin:0;padding:0;}
+#menu-lateral-material li{background:#04b9d1;text-align:right;padding:10px;font-family:'Raleway',sans-serif;border-top:1px solid #fff;}
+#menu-lateral-material li a{color:#fff;display:block}
+#lateral-material{padding:0;margin:0}
+#form-anular{border:1px solid #f00;padding:20px;background:#fc6767;color:#fff;display:none}
+#academico .bloque{background:#f4f4f4;margin:30px;border:5px solid #fff;box-shadow:0 0 15px #ddd;}
+#academico .bloque a{height:23px;padding:0;width:36px;margin:0 15px}
+#academico .bloque p{float:left}
+#academico .bloque h1{color:#ffa500}
+#crear-curso .msg-warning{font-size:20px;color:#f00;display:none}
+#crear-curso .campo-formulario{margin:15px 5px;}
+#crear-curso .campo-formulario input[name=alumno_agregar]{border:1px solid #c0c0c0;box-shadow:inset 0 0 5px #ddd}
+#crear-curso .campo-formulario select{border:1px solid #aaa;width:300px;box-shadow:inset 0 0 5px #ccc;margin:0}
+#crear-curso .campo-formulario span{padding:5px;margin:2px;display:inline-block;width:90px;text-align:right}
+#crear-curso .campo-formulario table tr{color:#111}
+.editar_alumno .formulario_editar_alumno .campo-formulario{margin:10px;float:left;}
+.editar_alumno .formulario_editar_alumno .campo-formulario input{border:1px solid #eee;font-size:12px;display:inline-block}
+.editar_alumno .formulario_editar_alumno .campo-formulario label{display:block;width:110px;text-align:right;margin:0 10px 0 0;padding:0}
+.editar_alumno .formulario_editar_alumno input[type=submit]{display:block;width:100%;position:relative;bottom:0}
+.editar_alumno .col1,.editar_alumno .col2{border-radius:10px;padding:20px;height:auto}
+.editar_alumno .busqueda{box-shadow:inset 0 0 20px #ddd;border-radius:10px;margin-bottom:5px}
+.campo-formulario{margin:10px;float:left;display:block;}
+.campo-formulario input{border:1px solid #eee;font-size:12px;display:inline-block}
+.campo-formulario label{width:90px;text-align:right;margin:0;padding:0;float:left;font-size:11px;margin-right:5px}
+input[name=btn-examen]{display:block;margin:0 auto}
+.lista_examenes{background:#eee;border-right:4px solid #fdbb4d;margin:6px 0;padding:10px;}
+.lista_examenes h3{float:left;margin:0;border:0;color:#50566f}
+.lista_examenes:hover{background:#50566f;color:#fdbb4d;transition:.5s;}
+.lista_examenes:hover h3{color:#fff}
+.profesor-index .menu{height:70px;width:100%;background:#fdbd4b;border-radius:5px 0 0 5px;margin:4px 0;float:left;position:relative;box-shadow:0 0 10px #ccc;padding:0;position:relative;z-index:1;}
+.profesor-index .menu h3{color:#fff;margin-left:10px}
+.profesor-index .triangulo{content:"";width:0;height:0;right:-60px;border-top:35px solid transparent;border-left:30px solid #fdbd4b;border-right:30px solid transparent;border-bottom:35px solid transparent;position:absolute}
+.profesor-index .form{background:#eee;box-shadow:0 5px 16px #eee;border:3px solid #fff;height:90px;}
+.profesor-index .form input[type=submit]{margin:10px 0 6px 0}
+.lista_materiales{margin:6px 0;}
+.lista_materiales ul{list-style:none;}
+.lista_materiales ul li{border-left:3px solid #fdbd4b;padding-left:15px;}
+.lista_materiales ul li:hover{border-left:3px solid #50566f;background:#eee;transition:.5s;}
+.lista_materiales ul li:hover .files_link{color:#50566f;transition:1s}
+.lista_materiales ul li h4{margin:0;padding:0}
+.lista_materiales ul li .files_link{color:#fdbd4b;margin:0;padding:0}
+.lista_materiales ul a{padding:0;color:#011568;}
+.lista_materiales ul a:hover{transition:.5s;color:#fdbd4b}
+.listado{margin:10px 0 20px 0;border-bottom:1px solid #fdbd4b;padding-bottom:25px;}
+.listado .list-noticias{background:#eee;margin-right:5px;box-shadow:0 0 5px #ccc;border:1px solid #fff}
+.listado .noticia-entera{display:none}
+.listado h3{font-size:16px}
+.listado h4{font-size:14px}
+.header{background:#50566f !important;color:#fff}
+body{background:#f8f8f8}
+a{color:#ffa500}
+a:hover{text-decoration:none;transition:.5px;color:#c0c0c0}
+nav ul{background:#fdbd4b;margin:0;padding:0;}
+nav ul a{color:#fff}
+nav ul a:hover{transition:.5s;color:#ffa500}
+h3{color:#ffa500}
+.pagoTable th{text-align:right}
+#buscador td{text-align:right;color:#ffa500;border:none !important}
+#btn-mensaje{width:100%}
+#form-pago{display:none}
+#informacion{margin-top:10px}
+#paneles{display:inline-block;margin-left:6em;padding:10px;}
+#paneles ul{list-style:none}
+#paneles li{padding:8px;}
+#paneles li a:hover{transition:.3s}
+#tabla-alumnos tr td .icon-binoculars{color:#fff;font-size:13px;text-shadow:2px 2px 24px #000}
+.collapse{background:#fff;margin-top:5em}
+.input-group{margin-bottom:12px;}
+.input-group .input-group-addon{font-size:12px}
+.row{padding:0;margin:0;display:none}
+.sesion{margin:12px 6px 0 0;}
+.sesion a{margin:0 10px}
+.subnav ul{background:none !important}
+.subnav li a{color:#fff;}
+.subnav li a:hover{transition:.5s;background:none;color:#ffa500}
+.thumbnail .p{height:120px;color:#888}
+.titulos{padding:12px;height:80px;margin-top:-37px;margin-bottom:10px;background:rgba(237,156,40,0.8);}
+.titulos h3{color:#fff}
+.titulos span{color:#fff !important}
+.input-group-addon{width:120px;text-align:right}
+.logo{width:160px;margin-top:-20px;padding:10px}

@@ -1,0 +1,10 @@
+body{position:relative !important;background:url("../image/bg_login.jpg")}
+.row{display:block;position:relative}
+.login{width:600px;overflow:hidden;margin:0 auto;padding:10px;border-radius:10px;background:rgba(255,255,255,0.5);}
+.login h4{color:#ffa500}
+.login p{font-size:11px;float:left}
+.login label{width:60px;text-align:right;color:#fff;font-size:12px}
+.login .msg{display:block;font-size:11px}
+ul{list-style:none;font-size:11px;float:left}
+.formulario{background:rgba(255,165,0,0.62);padding:10px;border-radius:10px}
+.bloque-login{margin:5px 0}
