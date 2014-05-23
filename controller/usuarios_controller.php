@@ -4,6 +4,11 @@
 		$usuario = new Usuario();
 		return $usuario->buscar($id)->fetch_assoc();
 	}
+	
+	function buscar_lista_usuarios($array){
+		$usuarios = new Usuario();
+		return $usuarios->buscar_lista($array);
+	}
 
 	function listar_usuarios($rol){
 		$usuarios = new Usuario();

@@ -4,7 +4,7 @@
 	
 	class Usuario extends db_model{
 		
-	//Funcion que ingresa un nuevo usuario
+		//Funcion que ingresa un nuevo usuario
 		function ingresar($array){
 
 			$query = "INSERT INTO usuarios (rut, password, rol_id, nombre, apellidos, direccion, telefono, celular, mail, fecha, created_at, habilitado) 
@@ -22,8 +22,9 @@
 			$this->connect();
 			$this->conn->query($query);
 	   		// var_dump($this->conn->error);
-	/* En caso de que el usuario sea un alumno con un apoderado, 
-    se agregaran los datos del apoderado en la tabla usuario */
+			
+			/* En caso de que el usuario sea un alumno con un apoderado, 
+		    se agregaran los datos del apoderado en la tabla usuario */
 			if(isset($array['rut_ap']))
 			{
 				$query = "INSERT INTO usuarios (rut, password, rol_id, nombre, apellidos, direccion, telefono, celular, mail, fecha, created_at, habilitado) 
@@ -45,9 +46,9 @@
 
 			$this->close(); 	
 
-	/* Ahora se agregaran los datos academicos del usuario en caso 
-    de que el rol del usuario sea alumno y además se crea los datos
-    de su cuenta corrinete */
+			/* Ahora se agregaran los datos academicos del usuario en caso 
+		    de que el rol del usuario sea alumno y además se crea los datos
+		    de su cuenta corrinete */
 	   		if($array['rol_id']=='3')
 	   		{
 				$id = agregar_datos_usuarios($array);
@@ -98,6 +99,8 @@
 			$this->connect();
 			$this->result = $this->conn->query($query);
 			$this->close();
+
+
 			return $this->result;
 
 		}
@@ -108,6 +111,29 @@
 			$this->close();
 			return $this->result;
 		}
+
+		function buscar_lista($array){
+			
+			$query = "SELECT a1.*, a2.* from usuarios a1, datos_usuarios a2
+					  where a1.rut = a2.usuario_id";
+
+			if($array['nombre']!='')
+				$query .= " AND a1.nombre LIKE '%".$array['nombre']."%'";
+			if($array['apellidos']!='')
+				$query .= " AND a1.apellidos LIKE '%".$array['apellidos']."%'";
+			if($array['rut']!='')
+				$query .= " AND a1.rut LIKE '%".$array['rut']."%'";
+			if($array['plan']!='')
+				$query .= " AND a2.plan_id =".$array['plan']."";
+			
+			$this->connect();
+			$this->result = $this->conn->query($query);
+			$this->close();
+			return $this->result;
+
+
+		}
+
 		function morosos(){
 			$query = 'select a1.id, a1.fecha_pago, a3.* from cuenta_corriente a1, datos_usuarios a2, usuarios a3 where fecha_pago <= now() and a1.id not in (select corriente_id from pagos where fecha < now()) and a1.datos_usuario_id = a2.id and a2.usuario_id = a3.rut ';
 			$this->connect();
