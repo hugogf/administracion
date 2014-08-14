@@ -18,6 +18,13 @@
 			$this->close();
 			return $this->result;
 		}
+		function curso($rut, $curso){
+			$query = "select * from cursa a1, cursos a2, categoria a3 where a1.cursos_id = a2.id and a2.categoria_id = a3.id and a1.usuarios_id = '".$rut."' AND a2.id=".$curso." AND activo = 1";
+			$this->connect();
+			$this->result = $this->conn->query($query);
+			$this->close();
+			return $this->result;
+		}
 
 		function listar_especifico($categoria, $plan){
 			$query = "SELECT grupo, id FROM cursos WHERE categoria_id = '".$categoria."' AND planes_id = '".$plan."' AND habilitado = 1";

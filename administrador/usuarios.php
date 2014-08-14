@@ -73,17 +73,21 @@
 					<th>Editar</th>
 					<th>Eliminar</th>
 				</tr>
-				<?php $usuarios = listar_usuarios('All');
-				while($usuario = $usuarios->fetch_assoc()){ ?>
+				<?php 
+					$usuarios = listar_usuarios('All', '1', '1');
+					$usuarios = json_decode($usuarios);
+					$cant_usuarios = count($usuarios);
+
+				for ($i=0; $i < $cant_usuarios ; $i++) { ?>
 				<tr>
-					<td><?php echo $usuario['nombre'] ?></td>
-					<td><?php echo $usuario['rol_id'] ?></td>
-					<td><?php echo $usuario['fecha'] ?></td>
-					<td><a href="#" class="editar-usr" data-valor="<?php echo $usuario['rut']; ?>" data-rol="<?php echo $usuario['rol_id']; ?>">Editar</a></td>
-					<td><a href="../controller/usuarios_controller.php?eliminar=on&rut=<?php echo $usuario['rut'];  ?>">Eliminar</a></td>
+					<td><?php echo $usuarios[$i]->nombre; ?></td>
+					<td><?php echo $usuarios[$i]->rol_id; ?></td>
+					<td><?php echo $usuarios[$i]->fecha; ?></td>
+					<td><a href="#" class="editar-usr" data-valor="<?php echo $usuarios[$i]->rut; ?>" data-rol="<?php echo $usuarios[$i]->rol_id; ?>">Editar</a></td>
+					<td><a href="../controller/usuarios_controller.php?eliminar=on&rut=<?php echo $usuarios[$i]->rut;  ?>">Eliminar</a></td>
 				</tr>
 				
-				<div class="form-plan form-edit-usr" title="<?php echo $usuario['nombre'].' '.$usuario['apellidos'].' ( '.$usuario['rut']. ' )' ?>" id="<?php echo $usuario['rut']; ?>">
+				<div class="form-plan form-edit-usr" title="<?php echo $usuarios[$i]->nombre.' '.$usuarios[$i]->apellidos.' ( '.$usuarios[$i]->rut. ' )'; ?>" id="<?php echo $usuarios[$i]->rut; ?>">
 					<form action="../controller/usuarios_controller.php" method="POST">
 						<div class="campo-form">
 						<label>Rol:</label>
@@ -96,15 +100,15 @@
 						</div>
 						<div class="campo-form">
 							<label>Nombre:</label>
-							<input type="text" name="nombre" value="<?php echo $usuario['nombre']; ?>">
+							<input type="text" name="nombre" value="<?php echo $usuarios[$i]->nombre; ?>">
 						</div>
 						<div class="campo-form">
 							<label>Apellidos:</label>
-							<input type="text" name="apellidos" value="<?php echo $usuario['apellidos']; ?>">
+							<input type="text" name="apellidos" value="<?php echo $usuarios[$i]->apellidos; ?>">
 						</div>
 						<div class="campo-form">
 							<label>Rut:</label>
-							<input type="text" name="rut" contenteditable="false" readonly="readonly" value="<?php echo $usuario['rut']; ?>">
+							<input type="text" name="rut" contenteditable="false" readonly="readonly" value="<?php echo $usuarios[$i]->rut; ?>">
 						</div>
 						<div class="campo-form">
 							<label>Clave</label>
@@ -116,15 +120,15 @@
 						</div>
 						<div class="campo-form">
 							<label>Mail:</label>
-							<input type="text" name="mail" value="<?php echo $usuario['mail']; ?>">
+							<input type="text" name="mail" value="<?php echo $usuarios[$i]->mail; ?>">
 						</div>
 						<div class="campo-form">
 							<label>Telefono:</label>
-							<input type="text" name="telefono" value="<?php echo $usuario['telefono']; ?>">
+							<input type="text" name="telefono" value="<?php echo $usuarios[$i]->telefono; ?>">
 						</div>
 						<div class="campo-form">
 							<label>Celular:</label>
-							<input type="text" name="celular" value="<?php echo $usuario['celular']; ?>">
+							<input type="text" name="celular" value="<?php echo $usuarios[$i]->celular; ?>">
 						</div>
 						<input type="submit" name="boton" value="Grabar">
 					</form>

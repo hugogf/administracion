@@ -35,7 +35,7 @@
 		      <div class="caption">
 		        <h3>Caja</h3>
 		        <p class="p">Revise el estado de la caja en el momento, cierre de caja e información general.</p>
-		        <p><a href="alumno.php" class="btn btn-warning pull-right" role="button">ir -></a></p>
+		        <p><a href="caja.php" class="btn btn-warning pull-right" role="button">ir -></a></p>
 		      </div>
 		    </div>
 	  	</div>		  	

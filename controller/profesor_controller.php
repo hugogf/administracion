@@ -28,6 +28,7 @@
 			if($alumnos)
 			while($alumno = $alumnos->fetch_assoc()){ ?>
 				<tr>
+				<?php var_dump($alumno); ?>
 					<td><?php echo $alumno['nombre']." ". $alumno['apellidos']; ?></td>
 					<td><?php echo $alumno['rut']; ?></td>
 				</tr>

@@ -33,17 +33,7 @@
 
 	
 	</div>
-	<script>
-	$('.menu').on("click", function(){
-		var id = $(this).attr('data-value');
-		
-		$('.menu').css("background", "#50566F");
-		$(".triangulo").css("border-left", "30px solid #50566F");
-		$("#link_"+id).css("background", "#fdbd4b");
-		$("#link_"+id+" .triangulo").css("border-left", "30px solid #fdbd4b");
-		console.log("cambio de color");
-	})
-	</script>
+
 	<script src="../js/profesor.js"></script>
 </body>
 </html> 

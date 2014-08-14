@@ -27,11 +27,13 @@
 		<?php if(isset($_GET['rut']) or isset($_POST['rut'])){
 			  	if (isset($_GET['rut']))
 			  	{
+			  		$rut = $_GET['rut'];
 				  	$alumno = buscar_usuario($_GET['rut']);
 				  	$datos_alumno = buscar_datos_usuario($_GET['rut']);
 			  	} 
 				else
 				{
+			  		$rut = $_POST['rut'];
 			  		$alumno = buscar_usuario($_POST['rut']); 
 				  	$datos_alumno = buscar_datos_usuario($_GET['rut']);
 
@@ -39,24 +41,26 @@
 	
 	 	<!-- fin busqueda de alumno-->	
  	
-
  	</div>
 		
 	<div class="row" id="cuerpo">
 		<?php if (isset($alumno)) { ?>
 		<div class="col-xs-6 col-xs-offset-7">
- 			<?php if ($alumno['habilitado'] == '0') {?>
+
+			<?php if ($alumno['habilitado'] == '0') {?>
+
 				<a href="#" class="btn btn-danger">Alumno dado de baja</a>
+				<a href="renuncias.php" class="btn btn-success">Volver</a>
  			<?php } else { ?>
 				<a href="#" id="btn-pago" class="btn btn-warning">Generar Pago</a>
-				<a href="#" id="btn-baja" class="btn btn-warning">Dar de baja a alumno</a>
+				<a href="#" id="btn-baja" class="btn btn-warning">Renunciar</a>
 				<a href="#" id="btn-anular-pago" class="btn btn-warning">Anular pago</a>
 			<?php } ?>
 		</div>
 
  		<!-- Formulario de Pagos (Controlando su visibilidad con jQuery en js/pagos_alumnos.js -->
 		
-		<div class="col-xs-7 col-xs-offset-2" id="form-pago">
+		<div class="col-xs-8 col-xs-offset-2" id="form-pago">
  				
  				<form class="formulario-pago" method="POST" action="../controller/pagos_controller.php">
 
@@ -64,8 +68,8 @@
 					
 					<div class="pack-form">
 						<label>Seleccione tipo Pago:</label>	
-	 					<select name="tipo" value="">
-	 						<option>...Seleccione</option>
+	 					<select name="tipo" required>
+	 						<option></option>
 	 						<option value="cheque">Cheque</option>
 	 						<option value="Efectivo">Efectivo</option>
 	 						<option value="T. Credito">T. Credito</option>
@@ -74,12 +78,12 @@
 
 					<div class="pack-form">				
  					<label> N° de boleta </label>
- 					<input type="text" name="boleta">
+ 					<input required type="text" name="boleta">
 					</div>
 					
 					<div class="pack-form">				
  						<label>Fecha:</label>
- 						<input type="text" name="fecha" class="fecha">
+ 						<input required type="text" name="fecha" class="fecha">
  					</div>
 					<div class="pack-form">				
 					<label>Seleccione Cuota</label>	
@@ -91,7 +95,7 @@
 						
 						<?php if ($cuota['numero_cuota']!=0) {
 						    
-							echo "cuota".$cuota['numero_cuota'].": $".$cuota['monto_descuento'];
+							echo "cuota: ".$cuota['numero_cuota']."- Adeudado: $".$cuota['monto_res']."  Valor real : ".$cuota['monto_descuento'];
 							
 						}else{
 							echo "Matricula : $".$cuota['monto_descuento'];
@@ -101,13 +105,17 @@
 					<?php } ?>
 					</select>
 				</div>
-					<div class="pack-form">				
-						<label>Monto a Cancelar:</label>
- 					<input type="text" name="monto">
+				<div class="pack-form">				
+					<label>Monto a Cancelar:</label>
+ 					<input required type="number" name="monto">
+ 				</div>
+ 				<div class="pack-form">				
+					<label>Monto a escrito:</label>
+ 					<input required type="text" name="monto_escrito">
  				</div>
 					<div class="pack-form">				
  					<label>Glosa: </label>
- 					<input type="text" name="glosa">
+ 					<input required type="text" name="glosa">
  				</div>
  				<input type="hidden" name="rut" value="<?php echo $_GET['rut']; ?>">
 				<div class="blocke-pago-3 cheque">
@@ -128,17 +136,55 @@
 					<input type="text" name="cobro_cheque" class="fecha">
 				</div>
 				<input type="hidden" name="rut" value="<?php echo $alumno['rut'] ?>">
-				<input type="submit" class="btn btn-warning" name="boton" value="Ingresar">
+				<input type="submit" class="btn btn-warning" id="enviar_pago" name="boton" value="Ingresar">
 				<a href="#" id="cerrar-pago" class="btn btn-default">Cerrar</a>
 			</form>
+			<div id="msg_boleta"></div>
+			<div id="boleta">
+				<br>
+				<br>
+				<br>
+				<div class="pull-right" style="margin: 0.13cm 0;">Fecha: <?php echo date('d-m-Y'); ?></div>
+				<table>
+					<tr>
+						<th>Recibi del señor(a) <?php echo strtoupper($alumno['rut']);?> :</th>
+					</tr>
+					<tr>
+						<th><?php echo strtoupper($alumno['nombre']." ".$alumno['apellidos']); ?></th>
+					</tr>
+					<tr>
+						<th>La cantidad de:<div id="cantidad"></div></th>
+					</tr>
+					<tr>
+						<td><div id="cantidad"></div></td>
+					</tr>
+					<tr>
+						<th>Concepto: <div id="glosa"></div></th>
+					</tr>
+					<tr class="pull-right">
+						<th>Total: <div id="total"></div> </th>
+					</tr>
+				</table>
+			</div>
  		</div>
  		<!-- Fin -->
 
  		<!-- Formulario baja a un alumno -->
  		<div class="col-xs-12" id="form-anular">
- 			<h1>¿Esta seguro que desea anular al alumno?</h1>
- 			<a href="../controller/usuarios_controller.php?eliminar=on&rut=<?php echo $alumno['rut'] ?>" class="btn btn-default">Sí</a>
- 			<a href="#" class="btn btn-default" id="no-baja">Cancelar</a>
+ 			<div class="row">
+ 				<div class="col-md-8 col-md-offset-2">
+		 			<h1>¿Esta seguro que desea anular al alumno?</h1>
+		 			<form action="../controller/usuarios_controller.php?eliminar=on&rut=<?php echo $alumno['rut'] ?>" method="POST">
+		 				<label style="width: 60px; text-aligne: right;">Fecha</label>
+		 				<input type="date" name="fecha" value="<?php echo date("Y-m-d"); ?>" class="fecha"><br>
+		 				<label style="width: 60px;">Motivo</label>
+		 				<textarea required name="motivo_eliminar" cols="120" rows="10"></textarea>
+		 				<br><br>
+		 				<input type="submit" name="opcion" value="Eliminar" class="btn btn-default">
+		 				<a href="#" class="btn btn-default" id="no-baja">Cancelar</a>
+		 			</form>
+ 				</div>
+ 			</div>
  		</div>
  		<!-- Fin -->
  		
@@ -152,9 +198,8 @@
  			
  				<?php $pagos = pagosAlumno($datos_alumno['id']); 
 				
-				if($pagos['num_pagos']!=0)
-				for ($i=0; $i < $pagos['num_pagos'] ; $i++){ 
-					$pago = $pagos[$i];?>
+				if($pagos)
+					while($pago = $pagos->fetch_assoc()){ ?>
 				
 					<option value="<?php echo $pago['id']; ?>"><?php echo $pago['monto']." | ".$pago['fecha']." | ".$pago['glosa']." | ".$pago['tipo']; ?></option>
  				
@@ -162,6 +207,7 @@
  				</select>
 				<label>Ingrese motivo de la anulación:</label>
  				<input type="text" placehover="Ingrese motivo" name="motivo">
+ 				<input type="hidden" name="rut_usuario" value=<?php echo $rut; ?>>
  				<input type="submit" value="Anular" name="boton" class="btn btn-warning">
 	 			<a href="#" id="cerrar-form-anular-pago" class="btn btn-default">Cerrar</a>
  			</form> 			
@@ -170,15 +216,8 @@
 
 		<div class="col-md-10 col-md-offset-1">
 		
+			<h3>DATOS PERSONALES</h3>
 			<table class="table pagoTable">
-				<tr class="active">
-					<td></td>
-					<td></td>
-					<th>DATOS PERSONALES</th>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
 				<tr CLASS="success">
 					<th>Nombre: </th>
 					<td><?php echo $alumno['nombre']." ".$alumno['apellidos'] ?></td>
@@ -196,14 +235,10 @@
 					<th>Dirección:</th>
 					<td><?php echo $alumno['direccion'] ?></td>
 				</tr>
+			</table>
+			<h3>DETALLE DE CUOTAS PENDIENTES</h3>
+			<table class="table pagoTable">
 				<tr class="active">
-					<td></td>
-					<td></td>
-					<th>DETALLE DE CUOTAS</th>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
 				<?php $cuotas = mostrar_cuotas($datos_alumno['id']); ?>
 				<?php while ($cuota = $cuotas->fetch_assoc()) { ?>
 					<tr CLASS="warning">
@@ -223,30 +258,31 @@
 						<td></td>
 					</tr>
 				<?php } ?>
+			</table>
+					<h3>PAGOS REALIZADOS</h3>
+			<table class="table table-hover">
 				<tr class="active">
-					<td></td>
-					<td></td>
-					<th>PAGOS REALIZADOS</th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<th>N°</th>
+					<th>Monto</th>
+					<th>N° Boleta</th>
+					<th>Glosa</th>
+					<th>Fecha</th>
+					<th>Tipo</th>
 				</tr>
-				<?php $pagos = pagosAlumno($datos_alumno['id']); 
+				<?php 
+
+				$pagos = pagosAlumno($datos_alumno['id']); 
 				if($pagos)
-				if($pagos['num_pagos']!=0)
-				for ($i=0; $i < $pagos['num_pagos'] ; $i++){ 
-					$pago = $pagos[$i];?>
-					<tr CLASS="danger">
-						<th><?php echo $i+1; ?></th>
-						<td>$<?php echo $pago['monto']; ?></td>
-						<th>Glosa:</th>
-						<td><?php echo $pago['glosa']; ?></td>
-						<td><?php echo $pago['fecha']; ?></td>
-						<td><?php echo $pago['tipo'] ?></td>
-					</tr>
-				<?php } ?>
+					while($pago = $pagos->fetch_assoc()){ ?>
+						<tr CLASS="danger">
+							<th></th>
+							<td>$<?php echo $pago['monto']; ?></td>
+							<td><?php echo $pago['boleta']; ?></td>
+							<td><?php echo $pago['glosa']; ?></td>
+							<td><?php echo $pago['fecha']; ?></td>
+							<td><?php echo $pago['tipo']; ?></td>
+						</tr>
+					<?php } ?>
 
 			</table>
 			<?php } else { ?>

@@ -1,7 +1,7 @@
 <?php
     require_once($_SERVER['DOCUMENT_ROOT']."/administracion/models/login_model.php");
 	session_start();
-	var_dump($_POST);
+	echo "Lo estamos redirigiendo";
 	$user = $_POST['usuario'];
 	$pass = md5($_POST['password']);
 	
@@ -24,7 +24,7 @@
 	 	else if	($_SESSION['rol'] == '2')
 	 		echo "  <meta http-equiv='Refresh' content='0;url=../secretaria'>";
 	 	else if	($_SESSION['rol'] == '3')
-			header('location: ../alumno');
+	 		echo "  <meta http-equiv='Refresh' content='0;url=../alumno'>";
 		else if	($_SESSION['rol'] == '4')
 			header('location: ../apoderado');
 		else if	($_SESSION['rol'] == '5')

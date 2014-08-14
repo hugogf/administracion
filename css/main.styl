@@ -1,0 +1,37 @@
+@import 'estilos.css' 
+
+#boleta
+	display none
+	font-size 14px !important
+	position absolute
+	top 0
+	left 0
+	width 270px 
+	height 290px
+	// padding 4.7cm 2cm 0.8cm 2cm
+	margin 40px 10px 0 20px
+
+	h5
+
+	table
+		width 100%
+
+		tr
+			margin 0 0
+			display block !important
+
+			th
+				font-size 14px !important
+			td
+				font-size 12px
+
+@media print
+	td, th
+		font-size 9px !important
+	a, .ver
+		display none
+	input
+		border 0	
+	@page 
+		display block
+

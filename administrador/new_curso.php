@@ -19,8 +19,8 @@
 		<label>Profesor:</label>
 		<select required="required" name="profesor">
 			<option></option>
-			<?php $profesores = listar_usuarios("5");
-				while($profesor = $profesores->fetch_assoc()){ ?>
+			<?php $profesores = listar_profesores();
+				 while($profesor = $profesores->fetch_assoc()){ ?>
 					<option value="<?php echo $profesor['rut']; ?>">
 						<?php echo $profesor['nombre']." ".$profesor['apellidos']; ?>
 					</option>

@@ -10,6 +10,12 @@
 		$alumno = buscar_usuario($_POST['rut']);
 		$datos_alumno = buscar_datos_usuario($_POST['rut']);
 		$plan = buscar_plan($datos_alumno['plan_id']);
+		$rut = $_POST['rut'];
+	}else if(isset($_GET['rut'])){
+		$alumno = buscar_usuario($_GET['rut']);
+		$datos_alumno = buscar_datos_usuario($_GET['rut']);
+		$plan = buscar_plan($datos_alumno['plan_id']);
+		$rut = $_GET['rut'];
 	}
 ?>
 
@@ -28,10 +34,10 @@
 			<input type="submit" class="btn btn-warning" name="boton" value="Buscar">
 		</form>
 	</div>
-	<?php if (isset($_POST['rut'])){ ?>
+	<?php if (isset($_POST['rut']) || isset($_GET['rut'])){ ?>
 		<div class="col-md-8 col-md-offset-2 col-xs-12">
 			<form action="../controller/usuarios_controller.php" method="POST" class="formulario_editar_alumno">
-				<input type="hidden" name="rut" value="<?php echo $_POST['rut']; ?>">
+				<input type="hidden" name="rut" value="<?php echo $rut; ?>">
 				<div class="col-md-8 col1">
 					<h3>Datos del alumno</h3>
 					<div class="campo-formulario">
@@ -66,12 +72,12 @@
 						<label>Jornada: </label>
 						<input type="text" name="jornada" value="<?php echo $datos_alumno['jornada']; ?>">
 					</div>
-					<input type="submit" class="btn btn-warning" name="boton" value="Editar">
+					<input type="submit" class="btn btn-warning" name="boton" value="Grabar">
 				</div>
 				<div class="col-md-4 col2">
 					<h3>Grupos</h3>
 					<p>El usuario se encuentra registrado en los siguientes cursos:</p>
-					<?php $cursos = listar_cursos($_POST['rut']);
+					<?php $cursos = listar_cursos($rut);
 						  $cont = 0;
 						  while($curso = $cursos->fetch_assoc()){ ?>
 						  	<div class="campo-formulario">

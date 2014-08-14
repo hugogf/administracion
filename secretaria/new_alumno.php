@@ -9,8 +9,8 @@
 		<input type="submit" value="Matricular" class="btn btn-warning pull-right" name="boton">
 		
 		<!-- Datos del alumno -->
-		<h3>Alumno</h3>
-		
+					
+		<h3>Alumno <small><input type="checkbox" style="width: auto !important;" id="extranjero">Alumno extranjero (Seleccione para eliminar la validación de rut) </small></h3>
 			<div class="col-xs-12 col-md-6">
 				<label>Nombre:</label>
 				<input type="text"  required="required"  name="nombre">
@@ -42,7 +42,7 @@
 			</div>
 			<input type="hidden" name="rol_id" value="3">
 			<!-- Datos del apoderado -->
-			<h3>Apoderado <small><input type="checkBox" id="desabilitar" name="ap"> Desabilitar Apoderado</small></h3>
+			<h3>Apoderado <small><input type="checkBox" id="desabilitar" name="ap" style="width: auto !important;"> Desabilitar Apoderado</small></h3>
 
 			<div class="col-xs-12 col-md-6" id="ap">
 				<label class="ap_apoderado">Nombre:</label>
@@ -170,5 +170,21 @@
 </div>
 
 	<script src="../js/new_alumno.js"></script>
+	<script>
+		$(function(){
+			$("#extranjero").on("click", function(){
+		
+				if($(this).is(":checked",true)){
+
+					console.log("listo lo primero");
+					$("input[name=rut]").attr("class","disabled");
+					$("input[name=rut_ap]").attr("class","disabled");
+				}else{
+					$("input[name=rut]").attr("class","rut");
+					$("input[name=rut_ap]").attr("class","rut");
+				}
+			})
+		})
+	</script>
 </body>
 </html>

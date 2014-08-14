@@ -5,11 +5,19 @@
 	class cuentaCorriente extends db_model {
 
 		function cuotas($id){
-			$query = "SELECT * FROM cuenta_corriente WHERE datos_usuario_id = '".$id."'";
+			$query = "SELECT *, (monto_descuento - MONTO_CANCELADO) monto_res FROM cuenta_corriente WHERE (monto_descuento - MONTO_CANCELADO) != 0 AND datos_usuario_id = '".$id."'";
 			$this->connect();
 			$this->result = $this->conn->query($query);
 			$this->close();
 			return $this->result;
+		}
+
+		function eliminar($id, $fecha){
+			$query = "DELETE FROM cuenta_corriente WHERE datos_usuario_id = ".$id." AND monto_cancelado = 0";
+			$this->connect();
+			$this->result = $this->conn->query($query);
+			$this->close();
+
 		}
 
 		function crear($array, $id){

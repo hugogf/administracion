@@ -1,5 +1,16 @@
 $(function(){
+	
+	var extranjero = 0;
 
+	$('#extranjero').on('click', function(){
+		if($(this).is(':checked'))
+			{extranjero = 1;}
+		else
+			{extranjero = 0;}
+
+		console.log(extranjero);
+	})
+	
 	$('.rut').focusout(function(){
 		var rut = $(this).val();
 		var largo = rut.length;
@@ -43,9 +54,10 @@ $(function(){
 		}
 
 
-		if(digito != resto){
+		if(digito != resto && extranjero == 0){
 			alert("Rut incorrecto, ej: 17115248-8, recuerde que k es minúscula");
 			$(".rut").val('');
+			console.log('Entre');
 		}
 
 	})

@@ -41,7 +41,8 @@
 						<label for="">Profesor:</label>
 						<select class="form-control" required="required" name="profesor_editar">
 							<option></option>
-							<?php $profesores = listar_usuarios("5");
+							<?php $profesores = listar_profesores();
+							var_dump($profesores);
 							while($profesor = $profesores->fetch_assoc()){?>
 									<option value="<?php echo $profesor['rut']; ?>">
 										<?php echo $profesor['nombre']." ".$profesor['apellidos']; ?>

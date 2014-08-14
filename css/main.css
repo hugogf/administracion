@@ -1,0 +1,2 @@
+@import 'estilos.css';
+#boleta{display:none;font-size:14px !important;position:absolute;top:0;left:0;width:270px;height:290px;margin:40px 10px 0 20px;}#boleta h5,#boleta table{width:100%;}#boleta h5 tr,#boleta table tr{margin:0 0;display:block !important;}#boleta h5 tr th,#boleta table tr th{font-size:14px !important}#boleta h5 tr td,#boleta table tr td{font-size:12px}@media print{td,th{font-size:9px !important}a,.ver{display:none}input{border:0}@page{display:block}}

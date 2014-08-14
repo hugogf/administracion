@@ -5,8 +5,8 @@
 	
  	if	($_SESSION['rol'] == '1')
  		header('location: ../administrador');
- 	else if	($_SESSION['rol'] == '3')
-		header('location: ../alumno');
+ 	else if	($_SESSION['rol'] == '2')
+		header('location: ../secretaria');
 	else if	($_SESSION['rol'] == '4')
 		header('location: ../apoderado');
 	else if	($_SESSION['rol'] == '5')
@@ -62,26 +62,6 @@
 			</div>
 
 			<p class="nvar-text pull-right sesion"><?php echo $_SESSION['user']; ?> <a href="../index.php" class="btn btn-warning btn-small">Cerrar</a></p>
-
-			<nav class="collapse navbar-collapse">
-				<ul class="nav nav-pills">
-					<li><a href="index.php">Administracion</a></li>
-					<li><a href="alumno.php">Financiera</a></li>
- 					<li><a href="noticias.php">Noticias</a></li>
-					<li><a href="academico.php">Academico</a></li>
-					<li><a href="#">Mensajes</a></li>
-					<li><a href="configuracion.php">Configuracion</a></li>
-						<div class="pull-right">
-							<label>Año</label>
-							<select name="" id="">
-								<option value="">2014</option>
-								<option value="">2013</option>
-								<option value="">2012</option>
-								<option value="">2011</option>
-							</select>
-						</div>
-				</ul>
-			</nav>
 		</div>
 		<div class="col-xs-12 listado">
 				<h3>Noticias</h3>
