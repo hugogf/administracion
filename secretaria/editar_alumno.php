@@ -25,11 +25,7 @@
 		<form action="editar_alumno.php" class="form" method="POST">
 			<div class="campo-formulario">
 				<label>Rut del alumno:</label>
-			<?php if(isset($_POST['rut'])){ ?>
-				<input type="text" name="rut" value="<?php echo $_POST['rut']; ?>">
-			<?php }else{ ?>
-				<input type="text" name="rut">
-			<?php } ?>
+				<input type="text" name="rut" value="<?php echo $rut; ?>">
 			</div>
 			<input type="submit" class="btn btn-warning" name="boton" value="Buscar">
 		</form>

@@ -87,7 +87,7 @@
 					<a href="?page=<?php echo $page + 1; ?>&orden=<?php echo $orden; ?>" class="btn btn-warning">Siguiente</a>
 				</div>
 
-				<table class="table table-hover" id="tabla-alumnos">
+				<table class="table table-hover table-bordered" id="tabla-alumnos">
 					<tr class="active">
 						<th></th>
 						<th><a href="?orden=nombres&page=<?php echo $page; ?>">Nombre</a></th>
