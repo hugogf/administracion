@@ -1,0 +1,9 @@
+{
+	"id" 			   : "id"		     ,
+	"MONTO_CANCELADO"  : "cancelado"     ,
+	"datos_usuario_id" : "datos"	     ,
+	"monto_total"      : "total_cuota"   ,
+	"descuento"        : "descuento"     ,
+	"monto_descuento"  : "matricula"     ,
+	"fecha_pago"       : "numero_cuotas"
+}

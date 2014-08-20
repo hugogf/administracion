@@ -4,33 +4,22 @@
       require_once($_SERVER['DOCUMENT_ROOT']."/administracion/controller/cursa_controller.php");
       require_once($_SERVER['DOCUMENT_ROOT']."/administracion/models/cursa_model.php");
       require_once($_SERVER['DOCUMENT_ROOT']."/administracion/controller/datos_usuarios_controller.php");
+      require_once($_SERVER['DOCUMENT_ROOT']."/administracion/controller/cuenta_corriente_controller.php");
 
-	if(isset($_POST['rut']))
-	{
-		$alumno = buscar_usuario($_POST['rut']);
-		$datos_alumno = buscar_datos_usuario($_POST['rut']);
-		$plan = buscar_plan($datos_alumno['plan_id']);
-		$rut = $_POST['rut'];
-	}else if(isset($_GET['rut'])){
+ if(isset($_GET['rut'])){
 		$alumno = buscar_usuario($_GET['rut']);
 		$datos_alumno = buscar_datos_usuario($_GET['rut']);
 		$plan = buscar_plan($datos_alumno['plan_id']);
 		$rut = $_GET['rut'];
+		$cuenta = mostrar_cuotas($datos_alumno['id']);
+		// var_dump($cuenta);
+	} else {
+		echo '<script> Window.location = "secretaria/" </script>';
 	}
 ?>
 
 <div class="row editar_alumno">
-	<div class="col-md-8 col-md-offset-2 col-xs-12 busqueda">
-	<h3>Busqueda de alumnos</h3>
-		<form action="editar_alumno.php" class="form" method="POST">
-			<div class="campo-formulario">
-				<label>Rut del alumno:</label>
-				<input type="text" name="rut" value="<?php echo $rut; ?>">
-			</div>
-			<input type="submit" class="btn btn-warning" name="boton" value="Buscar">
-		</form>
-	</div>
-	<?php if (isset($_POST['rut']) || isset($_GET['rut'])){ ?>
+	<?php if ( isset($_GET['rut'])){ ?>
 		<div class="col-md-8 col-md-offset-2 col-xs-12">
 			<form action="../controller/usuarios_controller.php" method="POST" class="formulario_editar_alumno">
 				<input type="hidden" name="rut" value="<?php echo $rut; ?>">
@@ -68,9 +57,9 @@
 						<label>Jornada: </label>
 						<input type="text" name="jornada" value="<?php echo $datos_alumno['jornada']; ?>">
 					</div>
-					<input type="submit" class="btn btn-warning" name="boton" value="Grabar">
 				</div>
-				<div class="col-md-4 col2">
+				<div class="col-md-12 col1">
+					
 					<h3>Grupos</h3>
 					<p>El usuario se encuentra registrado en los siguientes cursos:</p>
 					<?php $cursos = listar_cursos($rut);
@@ -91,7 +80,31 @@
 								</select>
 							</div>
 					<?php } ?>
+					<input type="submit" class="btn btn-warning" name="boton" value="Grabar">
 				</div>
+				<h3>Cuotas y pagos</h3>
+				<table class="table table-hover">
+					<tr>
+						<th>Cuota</th>
+						<th>Valor Neto</th>
+						<th>Descuento</th>
+						<th>Valor con Descuento</th>
+						<th>Total cancelado</th>
+						<th></th>
+					</tr>
+				<?php foreach ($cuenta as $cuota) { ?>
+					
+					<tr>
+						<td><?php echo $cuota['numero_cuota']; ?></td>
+						<td><?php echo $cuota['monto_total']; ?></td>
+						<td><?php echo $cuota['descuento']; ?></td>
+						<td><?php echo $cuota['monto_descuento']; ?></td>
+						<td><?php echo $cuota['MONTO_CANCELADO']; ?></td>
+						<td>Columna 6</td>
+					</tr>
+				<?php } ?>
+					
+				</table>
 			</form>
 			<?php } ?>
 		</div>
