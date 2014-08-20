@@ -17,7 +17,7 @@
 		echo '<script> Window.location = "secretaria/" </script>';
 	}
 ?>
-
+sadsefdewd
 <div class="row editar_alumno">
 	<?php if ( isset($_GET['rut'])){ ?>
 		<div class="col-md-8 col-md-offset-2 col-xs-12">
