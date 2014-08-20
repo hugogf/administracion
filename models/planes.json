@@ -1,0 +1,9 @@
+{
+	"id"     	   : "id"		    ,
+	"nombre" 	   : "nombre" 	    ,
+	"descripcion"  : "descripcion"  ,
+	"valor"		   : "valor"		,
+	"fecha_inicio" : "fecha_inicio" ,
+	"jornada"	   : "jornada"      ,
+	"habilitado"   : "habilitado"
+}

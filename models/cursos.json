@@ -1,0 +1,10 @@
+{
+	"id"  			: "id"			  ,
+	"grupo"		    : "grupo"		  ,
+	"created_at" 	: "created_at"	  ,
+	"inicio_clases" : "inicio_clases" ,
+	"profesor_id"   : "profesor_id"   ,
+	"planes_id" 	: "planes_id"	  ,
+	"categoria_id" 	: "categoria_id"  ,
+	"habilitado"	: "habilitado"
+}

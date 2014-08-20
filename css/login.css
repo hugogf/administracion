@@ -1,4 +1,4 @@
-body{position:relative !important;background:url("../image/bg_login.jpg")}
+body{position:relative !important;}
 .row{display:block;position:relative}
 .login{width:600px;overflow:hidden;margin:0 auto;padding:10px;border-radius:10px;background:rgba(255,255,255,0.5);}
 .login h4{color:#ffa500}

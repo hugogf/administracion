@@ -1,10 +1,10 @@
 <?php
 
 abstract class db_controller {
-	private static $host = "192.185.100.42:3306";
-	private static $user ="targetpl_cliente";
-	private static $pass ="123target";
-	protected $db = "targetpl_tg";
+	private static $host = "localhost";
+	private static $user ="root";
+	private static $pass ="";
+	protected $db = "preutcl_preut";
 	protected $conn;
 	public $result;
 	public	$last_id = false;

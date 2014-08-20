@@ -1,0 +1,15 @@
+{
+	"rut"		  :"rut"		,
+	"password"    :"clave"		,
+	"rol_id"	  :"rol"		,
+	"habilitado"  :"habilitado" ,
+	"nombre"	  :"nombre"		,
+	"apellidos"   :"apellidos"	,
+	"telefono"	  :"telefono"	,
+	"celular"	  :"celular"	,
+	"mail"		  :"mail"		,
+	"fecha"		  :"fecha"		,
+	"created_at"  :"creado"		,
+	"motivo_baja" :"motivo"		,	
+	"fecha_baja"  :"fecha_baja"
+}

@@ -109,7 +109,7 @@
 			if(isset($valores['SQL_ORDERBY']))
 				$query .= $valores['SQL_ORDERBY'];
 
-			var_dump($query);
+			// var_dump($query);
 			$this->query_return($query);
 
 			$this->resultado = array();

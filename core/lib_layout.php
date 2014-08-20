@@ -41,11 +41,11 @@
 	// ADMINISTRA LAS RUTAS, CREA LINKS PARA LOS DIFERENTES CONTROLADORES Y ACCIONES QUE EL USUARIO
 	// DESEA EJECUTAR
 
-	function link_to($controller = false, $action = 'index', $name = "Link", $attr1='', $attr2='')
+	function link_to($controller = false, $action = 'index', $name = "Link", $attr1="", $css='')
 	{
 		
 		if($controller)
-			echo "<a href='index.php?c=$controller&a=$action&i=".$attr1."&j=".$attr2."'>$name</a>";
+			echo "<a href='index.php?c=".$controller."&a=".$action."&i=".$attr1."' css='".$css."'>$name</a>";
 	}
 			
 ?>
